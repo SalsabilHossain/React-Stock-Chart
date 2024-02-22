@@ -11,20 +11,47 @@ import {
   Filler
 } from "chart.js";
 import { Line } from "react-chartjs-2";
-import './StockChart.css';
+import "./StockChart.css";
 
-ChartJS.register(
-  CategoryScale,
-  LinearScale,
-  PointElement,
-  LineElement,
-  Title,
-  Tooltip,
-  Legend,
-  Filler
-);
-
-const StockChart = ({ firstData, secondData, labels }) => {
+const StockChart = ({ firstData, secondData, labels, footer}) => {
+  ChartJS.register(
+    CategoryScale,
+    LinearScale,
+    PointElement,
+    LineElement,
+    Title,
+    Tooltip,
+    Legend,
+    Filler,
+    {
+      id: "sampleId",
+      afterDraw: function (chart, easing) {
+        if (
+          chart.tooltip._active &&
+          chart.tooltip._active.length &&
+          chart.config.type === "line"
+  
+        ) {
+          const activePoint = chart.tooltip._active[0];
+          const ctx = chart.ctx;
+          const x = activePoint.element.x;
+          const topY = chart.scales.y.top;
+          const bottomY = chart.scales.y.bottom;
+          ctx.save();
+          ctx.beginPath();
+          ctx.moveTo(x, topY);
+          ctx.lineTo(x, bottomY);
+          ctx.lineWidth = 2;
+          ctx.strokeStyle = "#8c8c8c";
+          ctx.stroke();
+  
+          ctx.restore();
+        }
+       
+      },
+    }
+  );
+  
   const options = {
     responsive: true,
     scales: {
@@ -50,12 +77,12 @@ const StockChart = ({ firstData, secondData, labels }) => {
     plugins: {
       title: {
         display: true,
-        text: "Chart.js Line Chart - Multi Axis",
+        text: "Chart for Stock Price and News Count",
       },
     },
     showTooltips: true,
     tooltips: {
-      mode: "x",
+      mode: "index",
       intersect: false,
     },
     hover: {
@@ -88,6 +115,7 @@ const StockChart = ({ firstData, secondData, labels }) => {
   return (
     <div class="chart-container">
       <Line options={options} data={data} />
+      {footer}
     </div>
   );
 };

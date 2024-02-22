@@ -51,12 +51,21 @@ const ChartDataController = () => {
     });
   }, []);
 
+  // lets assume the current date is date in the middle of the array
+  // we will check 7 days before the current date for last week data
+  const lastWeekStockPrice = stockData[stockData.length / 2 - 7];
+  // we will check 30 days before the current date for last week data
+  const lastMonthStockPrice = stockData[stockData.length / 2 - 30];
+
   return (
-    <StockChart
-      firstData={closingStockPrices}
-      secondData={articleCountData}
-      labels={datesForStockPrices}
-    />
+    <>
+      <StockChart
+        firstData={closingStockPrices}
+        secondData={articleCountData}
+        labels={datesForStockPrices}
+        footer={<div>Last Month: {lastMonthStockPrice?.Close} Last Week: {lastWeekStockPrice?.Close}</div>}
+      />
+    </>
   );
 };
 
