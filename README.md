@@ -1,70 +1,38 @@
 # Getting Started with Create React App
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
-
 ## Available Scripts
 
 In the project directory, you can run:
 
-### `npm start`
+### `yarn install`
 
-Runs the app in the development mode.\
-Open [http://localhost:3000](http://localhost:3000) to view it in your browser.
+Intalls all the dependencies for the project
 
-The page will reload when you make changes.\
-You may also see any lint errors in the console.
+### `yarn start`
 
-### `npm test`
+Runs the app in the development mode.
 
-Launches the test runner in the interactive watch mode.\
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
+## Folder and Files Structure and Content
 
-### `npm run build`
+### `src/App.js`
+The main parent component rendering the application.
 
-Builds the app for production to the `build` folder.\
-It correctly bundles React in production mode and optimizes the build for the best performance.
+### `src/ChartData`
 
-The build is minified and the filenames include the hashes.\
-Your app is ready to be deployed!
+Contains all the data for the stock chart in the files AAPL.csv and data2023.jsonn to plot the chart.
 
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
+### `src/Components`
 
-### `npm run eject`
+Contains all the React Components needed for the project.
 
-**Note: this is a one-way operation. Once you `eject`, you can't go back!**
+### `src/Components/ChartDataController.jsx`
 
-If you aren't satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
+Contains all the logic related to the manipulation of the stock datas and the article datas. In this file we are using all the stock closing price data and the dates for the stock data. We are counting the number of articles/news against the stock data dates and preparing/reforming the data to be suitable for the chart. Additionally, we are also checking the last week's stock price and last month's stock price assuming the current date is in the middle of the stock array. The data is then passed into the StockChart.jsx to plot the chart.
 
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you're on your own.
+### `src/Components/StockChart.jsx`
 
-You don't have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn't feel obligated to use this feature. However we understand that this tool wouldn't be useful if you couldn't customize it when you are ready for it.
+Contains the logic related to rendering the Chart. We are using the library react-chartjs to render the data of Closing Stock Price and Number of Articles.
 
-## Learn More
+### `src/Components/StockChart.css`
 
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
-
-To learn React, check out the [React documentation](https://reactjs.org/).
-
-### Code Splitting
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/code-splitting](https://facebook.github.io/create-react-app/docs/code-splitting)
-
-### Analyzing the Bundle Size
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size](https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size)
-
-### Making a Progressive Web App
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app](https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app)
-
-### Advanced Configuration
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/advanced-configuration](https://facebook.github.io/create-react-app/docs/advanced-configuration)
-
-### Deployment
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/deployment](https://facebook.github.io/create-react-app/docs/deployment)
-
-### `npm run build` fails to minify
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify](https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify)
+Contains some minor styling in CSS which is used in the StockChart.jsx component.

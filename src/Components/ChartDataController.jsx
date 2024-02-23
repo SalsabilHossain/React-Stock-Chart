@@ -63,7 +63,7 @@ const ChartDataController = () => {
         firstData={closingStockPrices}
         secondData={articleCountData}
         labels={datesForStockPrices}
-        footer={<div>Last Month: {lastMonthStockPrice?.Close} Last Week: {lastWeekStockPrice?.Close}</div>}
+        footer={<div>Last Month: ${lastMonthStockPrice?.Close} Last Week: ${lastWeekStockPrice?.Close}</div>}
       />
     </>
   );

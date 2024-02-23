@@ -25,7 +25,7 @@ const StockChart = ({ firstData, secondData, labels, footer}) => {
     Filler,
     {
       id: "sampleId",
-      afterDraw: function (chart, easing) {
+      afterDraw: function (chart) {
         if (
           chart.tooltip._active &&
           chart.tooltip._active.length &&
@@ -44,7 +44,6 @@ const StockChart = ({ firstData, secondData, labels, footer}) => {
           ctx.lineWidth = 2;
           ctx.strokeStyle = "#8c8c8c";
           ctx.stroke();
-  
           ctx.restore();
         }
        
