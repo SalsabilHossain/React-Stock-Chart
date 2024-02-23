@@ -6,5 +6,9 @@
     width: 60%;
     height: 60%;
     color: gray;
-    margin: 5%;
+    margin: auto;
+    margin-top: 2%;
+    border: solid 1px #6f5b3e;
+    padding: 5%;
+    background-color: #f9f6f0;
  }
